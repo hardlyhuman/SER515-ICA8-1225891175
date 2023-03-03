@@ -17,11 +17,15 @@ public static void main(final String[] args) throws IOException {
     System.out.println("Enter 0 to read the input from the file or 1 to enter the input from CLI");
     Scanner sc = new Scanner(System.in);
     int choice = sc.nextInt();
+    
     if(choice == 1){
+        int count = 0;
+        while(count!=-1){
         System.out.println("Enter the input string");
         String str = sc.next();
-        int count = urinals.countUrinals(str);
+        count = urinals.countUrinals(str);
         System.out.println("The number of urinals that can be used is "+count);
+    }
     }
     else if(choice == 0){
         System.out.println("Enter the input file name");
