@@ -10,5 +10,10 @@ public class UrinalsTest {
         urinals = new Urinals();
     }
 
+    @Test
+    public void testGoodString() {
+        assertFalse(urinals.goodString("0123456789ABCDEF1"));
+    }
+
     
 }
