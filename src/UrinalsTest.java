@@ -1,4 +1,8 @@
 import static org.junit.Assert.*;
+
+import java.io.FileNotFoundException;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,18 +20,29 @@ public class UrinalsTest {
     }
 
     @Test
-    public void testOpenAndCloseFile() {
-        urinals.openFile("testfile.txt");
-        // code to test file opening and closing
-        urinals.closeFile();
+    public void testReadFileToList() {
+        // Test case when file is present
+        
+        String filename = "/Users/hardlyhuman/Documents/ASU/Semester 2/SER 515/SER515-ICA8-1225891175/src/test.txt";
+        List<String> inputList = urinals.readFileToList(filename);
+        assertEquals(2, inputList.size());
+        assertEquals("Hello", inputList.get(0));
+        assertEquals("World", inputList.get(1));
     }
 
     @Test
-    public void testGetString() {
-        urinals.openFile("testfile.txt");
-        String str = urinals.getString();
-        assertEquals("10101", str);
-        urinals.closeFile();
+    public void testReadFileToList_FileNotFound() {
+        // Test case when file is not present
+        String filename = "SER515-ICA8-1225891175/src/missing.txt";
+        assertNull(urinals.readFileToList(filename));
+    }
+
+    @Test
+    public void testReadFileToList_EmptyFile() {
+        // Test case when file is present but empty
+        String filename = "/Users/hardlyhuman/Documents/ASU/Semester 2/SER 515/SER515-ICA8-1225891175/src/empty.txt";
+        List<String> inputList = urinals.readFileToList(filename);
+        assertTrue(inputList.isEmpty());
     }
 
     @Test
