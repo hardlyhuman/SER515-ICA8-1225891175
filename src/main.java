@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,11 +33,7 @@ public static void main(final String[] args) throws IOException {
             System.out.println("File not found.");
         } else {
             System.out.println("Input list: " + inputList);
-            File file = new File(outputFileName);
-                
-                // Create a new FileWriter object with the file
-            FileWriter writer;
-            writer = new FileWriter(file);
+            List<Integer> outputList = new ArrayList<>();
             
             for (String element : inputList) {
             Boolean isValid = urinals.goodString(element);
@@ -46,29 +43,19 @@ public static void main(final String[] args) throws IOException {
             }
             else {
             int count = urinals.countUrinals(element);
-            
-            try{
-                writer.write(Integer.toString(count) + "\n");
-            }
-            catch(IOException e){
-                System.out.println("Error writing to file: " + e.getMessage());
-            }
+            outputList.add(count);
+            urinals.writeListToFile(outputList, outputFileName);
             System.out.println("The number of urinals that can be used is "+count);
             }
         }
-            writer.close();
-    }
-        
-    }
+        }
+    }    
     
     else{
         System.out.println("Invalid choice");
     }
 }
-   // urinals.openFile("testfile.txt");
-    //String str = urinals.getString();
-   // int count = urinals.countUrinals(str);
-   // urinals.writeToFile(Integer.toString(count));
-   // urinals.closeFile();
-    
 }
+
+
+

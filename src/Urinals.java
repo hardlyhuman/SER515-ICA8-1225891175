@@ -47,9 +47,25 @@ public class Urinals {
         return inputList;
     }
 
-    public void closeFile() {
-        // code to close file
+   
+    public static void writeListToFile(List<Integer> list, String filename) {
+        try {
+        File file = new File(filename);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+        for (Integer count : list) {
+            writer.write(Integer.toString(count));
+            writer.newLine();
+        }
+        writer.close();
     }
+    catch(IOException e){
+        System.out.println("Error writing to file: " + e.getMessage());
+    }
+    catch(Exception e){
+        System.out.println("Error: " + e.getMessage());}
+    }
+
+
 
     public void writeToFile(String str) {
         // code to write to file

@@ -1,6 +1,8 @@
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -43,6 +45,63 @@ public class UrinalsTest {
         String filename = "/Users/hardlyhuman/Documents/ASU/Semester 2/SER 515/SER515-ICA8-1225891175/src/empty.txt";
         List<String> inputList = urinals.readFileToList(filename);
         assertTrue(inputList.isEmpty());
+    }
+
+    @Test
+    public void testWriteListToFile() {
+        List<Integer> list = new ArrayList<>();
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        String filename = "testfile.txt";
+
+        // Call the method to write the list to file
+        urinals.writeListToFile(list, filename);
+
+        // Verify that the file was created and contains the correct data
+        File file = new File(filename);
+        assertTrue(file.exists());
+
+        List<String> inputList = urinals.readFileToList(filename);
+        assertNotNull(inputList);
+        assertEquals(3, inputList.size());
+        assertEquals("10", inputList.get(0));
+        assertEquals("20", inputList.get(1));
+        assertEquals("30", inputList.get(2));
+
+        // Cleanup
+        file.delete();
+    }
+
+    @Test
+    public void testWriteEmptyListToFile() {
+        List<Integer> list = new ArrayList<>();
+        String filename = "testfile.txt";
+
+        // Call the method to write the list to file
+        urinals.writeListToFile(list, filename);
+
+        // Verify that the file was created and is empty
+        File file = new File(filename);
+        assertTrue(file.exists());
+        assertEquals(0, file.length());
+
+        // Cleanup
+        file.delete();
+    }
+
+    @Test
+    public void testWriteToFileWithInvalidFilename() {
+        List<Integer> list = new ArrayList<>();
+        list.add(10);
+        String filename = "invalid/filename.txt";
+
+        // Call the method to write the list to file
+        urinals.writeListToFile(list, filename);
+
+        // Verify that an exception was thrown
+        File file = new File(filename);
+        assertFalse(file.exists());
     }
 
     @Test
