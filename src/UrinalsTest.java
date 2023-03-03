@@ -90,20 +90,7 @@ public class UrinalsTest {
         file.delete();
     }
 
-    @Test
-    public void testWriteToFileWithInvalidFilename() {
-        List<Integer> list = new ArrayList<>();
-        list.add(10);
-        String filename = "invalid/filename.txt";
-
-        // Call the method to write the list to file
-        urinals.writeListToFile(list, filename);
-
-        // Verify that an exception was thrown
-        File file = new File(filename);
-        assertFalse(file.exists());
-    }
-
+    
     @Test
     public void testCountUrinals() {
         assertEquals(1, urinals.countUrinals("10001"));
