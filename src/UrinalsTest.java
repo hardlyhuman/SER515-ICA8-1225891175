@@ -15,6 +15,20 @@ public class UrinalsTest {
         assertFalse(urinals.goodString("0123456789ABCDEF1"));
     }
 
+    @Test
+    public void testOpenAndCloseFile() {
+        urinals.openFile("testfile.txt");
+        // code to test file opening and closing
+        urinals.closeFile();
+    }
+
+    @Test
+    public void testGetString() {
+        urinals.openFile("testfile.txt");
+        String str = urinals.getString();
+        assertEquals("10101", str);
+        urinals.closeFile();
+    }
 
     @Test
     public void testCountUrinals() {

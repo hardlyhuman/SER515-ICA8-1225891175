@@ -1,4 +1,6 @@
-import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //package src;
 
@@ -17,13 +19,40 @@ public class Urinals {
         return str.length() <= 16;
     }
 
-    public void openFile(String fileName) {
-        file = new File(fileName);
-        // code to open file
+    public static List<String> readFileToList(String filename) {
+        List<String> inputList = new ArrayList<>();
+        
+        try {
+            File file = new File(filename);
+            
+            if (file.exists()) {
+                FileReader fileReader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    inputList.add(line);
+                }
+                bufferedReader.close();
+            } else {
+                throw new FileNotFoundException();
+            }
+        } catch (FileNotFoundException e) {
+            return null;
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+            return null;
+        }
+    
+        
+        return inputList;
     }
 
     public void closeFile() {
         // code to close file
+    }
+
+    public void writeToFile(String str) {
+        // code to write to file
     }
 
     public String getString() {
