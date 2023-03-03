@@ -1,3 +1,5 @@
+//package src;
+
 // Author: Sri Harsha Gajavalli
 // ASU ID: 1225891175
 // ASUrite: sgajaval
@@ -7,6 +9,10 @@
 
 
 public class Urinals{
+    /**
+     * @param s
+     * @return
+     */
     Boolean goodString(String s){
         /*int count = s.length();
         
@@ -18,13 +24,13 @@ public class Urinals{
         return true;
     }
 
-    void openFile(){
+    void openFile(String string){
         System.out.println("Not yet implemented");
     }
 
     int countUrinals(String s){
         System.out.println("Not yet implemented");
-        return 0;
+        return 1;
     }
 
     String getString(){
@@ -39,9 +45,5 @@ public class Urinals{
     void writeToFile(String s){
         System.out.println("Not yet implemented");
     }
-    
-}
-
-public class public static void main(String[] args) {
     
 }
