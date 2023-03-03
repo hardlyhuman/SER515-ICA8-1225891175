@@ -15,5 +15,14 @@ public class UrinalsTest {
         assertFalse(urinals.goodString("0123456789ABCDEF1"));
     }
 
-    
+
+    @Test
+    public void testCountUrinals() {
+        assertEquals(1, urinals.countUrinals("10001"));
+        assertEquals(0, urinals.countUrinals("1001"));
+        assertEquals(3, urinals.countUrinals("00000"));
+        assertEquals(2, urinals.countUrinals("0000"));
+        assertEquals(1, urinals.countUrinals("01000"));
+        assertEquals(-1, urinals.countUrinals("011"));
+    }
 }
