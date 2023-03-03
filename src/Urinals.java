@@ -1,3 +1,5 @@
+import java.io.File;
+
 //package src;
 
 // Author: Sri Harsha Gajavalli
@@ -8,42 +10,52 @@
 
 
 
-public class Urinals{
-    /**
-     * @param s
-     * @return
-     */
-    Boolean goodString(String s){
-        /*int count = s.length();
-        
-        if(count > 0 and count < 16){
-            return false;
-        }
-        return true;*/
-        System.out.println("Not yet implemented");
-        return true;
+public class Urinals {
+    private File file;
+
+    public boolean goodString(String str) {
+        return str.length() <= 16;
     }
 
-    void openFile(String string){
-        System.out.println("Not yet implemented");
+    public void openFile(String fileName) {
+        file = new File(fileName);
+        // code to open file
     }
 
-    int countUrinals(String s){
-        System.out.println("Not yet implemented");
-        return 1;
+    public void closeFile() {
+        // code to close file
     }
 
-    String getString(){
-        System.out.println("Not yet implemented");
-        return "";
+    public String getString() {
+        // code to read string from file
+        return "10101"; // example string for testing
     }
 
-    void closeFile(){
-        System.out.println("Not yet implemented");
-    }
-
-    void writeToFile(String s){
-        System.out.println("Not yet implemented");
-    }
+    public int countUrinals(String urinals){
+        if (urinals.contains("11")) return -1;
+            if (urinals.equals("0")) return 1;
+            if (urinals.equals("1")) return 0;
     
+            char[] chars = urinals.toCharArray();
+            int counter = 0;
+    
+            for (int i = 0; i < chars.length - 1; i++) {
+                if (i == 0) {
+                    if (chars[i] == '0' && chars[i + 1] == '0') {
+                        chars[i] = '1';
+                        counter++;
+                    }
+                }
+                if (i > 0) {
+                    if (chars[i] == '0' && chars[i - 1] == '0' && chars[i + 1] == '0') {
+                        chars[i] = '1';
+                        counter++;
+                    }
+                }
+            }
+            if (chars[chars.length - 1] == '0' && chars[chars.length - 2] == '0') {
+                counter++;
+            }
+            return counter;
+      }
 }

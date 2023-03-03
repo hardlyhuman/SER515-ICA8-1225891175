@@ -9,7 +9,7 @@ public static void main(final String[] args) {
     urinals.openFile("testfile.txt");
     String str = urinals.getString();
     int count = urinals.countUrinals(str);
-    urinals.writeToFile(Integer.toString(count));
+   // urinals.writeToFile(Integer.toString(count));
     urinals.closeFile();
     
 }
